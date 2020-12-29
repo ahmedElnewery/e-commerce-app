@@ -17,7 +17,8 @@ const initialState = {
 const rootReducer = combineReducers({
     productList: productReducers,
     productDetail:productDetailReducer,
-    cart: cartItemsReducer
+    cart: cartItemsReducer,
+
 })
 
 const store = createStore(
