@@ -3,7 +3,9 @@ const app = express()
 const dotenv = require("dotenv")
 const products = require("./data/products.js")
 const connectDB = require("./config/db.js")
-const router = require("./routes/productRoute.js")
+const productRouter = require("./routes/productRoute.js")
+const userRouter = require("./routes/userRoute")
+
 const { errorHandler, notFound } = require("./middleware/errorMiddleware.js")
 dotenv.config()
 connectDB()
@@ -14,7 +16,10 @@ app.listen(
   console.log(`server running in ${NODE_ENV} mode on port ${PORT}`)
 )
 
-app.use("/api/products", router)
+app.use(express.json())
+app.use("/api/products", productRouter)
+app.use("/api/users", userRouter)
+
 app.use(errorHandler)
 app.use(notFound)
 
