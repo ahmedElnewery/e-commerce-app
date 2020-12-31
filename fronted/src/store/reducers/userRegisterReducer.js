@@ -5,17 +5,15 @@ const initialState = {
   loading: false,
   error: null,
 };
- export const userLoginReducer = (state = initialState, action) => {
+ export const userRegisterReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.USER_LOGIN_REQUEST:
+    case actionTypes.USER_REGISTER_REQUEST:
       return { ...state, loading: true, error: null };
-    case actionTypes.USER_LOGIN_SUCCESS:
+    case actionTypes.USER_REGISTER_SUCCESS:
       return { ...state, loading: false, user: action.payload };
-    case actionTypes.USER_LOGIN_FAIL:
+    case actionTypes.USER_REGISTER_FAIL:
       return { ...state, loading: false, error: action.payload };
-    case actionTypes.USER_LOGOUT:
-      return {}
-
+    
     default:
       return state;
   }

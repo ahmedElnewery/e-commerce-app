@@ -5,9 +5,10 @@ import Footer from "./components/Footer/Footer";
 import HomeScreen from "./components/Screens/HomeScreen/HomeScreen";
 import ProductScreen from "./components/Screens/ProductScreen/ProductScreen";
 import CartScreen from "./components/Screens/CartScreen/CartScreen";
+import LoginScreen from "./components/Screens/LoginScreen/LoginScreen";
+import RegisterScreen from "./components/Screens/RegisterScreen/RegisterScreen";
 
 import { Container } from "react-bootstrap";
-
 function App() {
   return (
     <BrowserRouter>
@@ -18,6 +19,10 @@ function App() {
             <Route path='/' exact component={HomeScreen} />
             <Route path='/product/:id' component={ProductScreen} />
             <Route path='/cart/:id?' component={CartScreen} />
+            <Route path='/login' component={LoginScreen} />
+            <Route path='/register' component={RegisterScreen} />
+
+
 
           </Container>
         </main>
