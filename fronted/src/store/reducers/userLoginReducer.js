@@ -13,6 +13,8 @@ const initialState = {
       return { ...state, loading: false, user: action.payload };
     case actionTypes.USER_LOGIN_FAIL:
       return { ...state, loading: false, error: action.payload };
+    case actionTypes.USER_LOGOUT:
+      return {}
 
     default:
       return state;
