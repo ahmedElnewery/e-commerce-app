@@ -17,12 +17,12 @@ const RegisterScreen = ({ history, location }) => {
   const dispatch = useDispatch();
 
   const { loading, error, user } = useSelector((state) => state.userRegister);
-  const redirect = location.search ? location.search.split("=")[1] : "/";
+ const {user : userLogin} = useSelector(state=> state.userLogin)
 
   const submitHandler = (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      console.log(password !== confirmPassword)
+      
       setErrorMessage("Password doesn't match");
 
     } else {
@@ -31,10 +31,10 @@ const RegisterScreen = ({ history, location }) => {
   };
 
   useEffect(() => {
-    if (user) {
-      history.push(redirect);
+    if (userLogin) {
+      history.push("/");
     }
-  }, [user, history, redirect]);
+  }, [userLogin, history]);
 
   return (
     <div className="py-5">
@@ -94,7 +94,7 @@ const RegisterScreen = ({ history, location }) => {
               <Col>
                 Already Registered ?{" "}
                 <Link
-                  to={redirect ? `/login?redirect=${redirect}` : "/login"}
+                  to= "/login"
                 >
                   Login
                 </Link>

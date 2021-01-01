@@ -40,9 +40,9 @@ const registerUser = asyncHandler(async (req, res) => {
 const getProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
   if (user) {
-    res.send({
+    res.send(
     user  
-    })
+    )
   } else {
     res.status(404);
     throw new Error("user not found");

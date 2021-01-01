@@ -13,7 +13,7 @@ const LoginScreen = ({ history, location }) => {
   const dispatch = useDispatch();
 
   const { loading, error, user } = useSelector((state) => state.userLogin);
-  const redirect = location.search ? location.search.split("=")[1] : "/";
+  // const redirect = location.search ? location.search.split("=")[1] : "/";
   console.log("loaction: ", location);
   const submitHandler = (e) => {
     e.preventDefault();
@@ -22,18 +22,18 @@ const LoginScreen = ({ history, location }) => {
 
   useEffect(() => {
     if (user) {
-      history.push(redirect);
+      history.push("/");
     }
-  }, [user, history, redirect]);
+  }, [user, history]);
 
   return (
     <div className="py-5">
       <Container>
         <Row className="justify-content-center">
           <Col md={6}>
-            <Form onSubmit={submitHandler}>
               <h1 className="py-3">Sign in</h1>
-              {loading && <Spinner />}
+              {loading ? <Spinner /> : (
+            <Form onSubmit={submitHandler}>
               {error && <Message variant="danger">{error}</Message>}
               <Form.Group controlId="emailController">
                 <Form.Label>Email address</Form.Label>
@@ -60,11 +60,12 @@ const LoginScreen = ({ history, location }) => {
                 Submit
               </Button>
             </Form>
+              )}
             <Row className="py-3">
               <Col>
                 New to here ?{" "}
                 <Link
-                  to={redirect ? `/register?redirect=${redirect}` : "/register"}
+                  to= "/register"
                 >
                   Register
                 </Link>

@@ -18,7 +18,6 @@ export const register = (name,email, password) => async (dispatch) => {
 
     localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (error) {
-    console.log(error)
     dispatch({
       type: actionTypes.USER_REGISTER_FAIL,
       payload:
